@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itguigu.webtest.mapper.DepartmentMapper">
+
+    <!--此处的id需要和Mapper里的方法名一致 区分大小写；返回类型只需要写实体类名，不分大小写（相当于已经起了别名）-->
+    <select id="getDep" resultType="department">
+        select  * from department
+    </select>
+
+    <select id="getDepById" parameterType="int" resultType="department">
+        select * from department where id=#{id}
+    </select>
+
+    <insert id="insertDep" parameterType="department">
+        insert into department(departmentName,floor) values(#{departmentName},#{floor})
+    </insert>
+
+    <update id="updateDep" parameterType="department">
+        update department set departmentName=#{departmentName},floor=#{floor} where id=#{id}
+    </update>
+
+    <delete id="deleteDep" parameterType="int">
+        delete from department where id=#{id}
+    </delete>
+
+</mapper>
